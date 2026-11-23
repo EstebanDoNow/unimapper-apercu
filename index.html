@@ -418,6 +418,63 @@ main{position:relative;z-index:10}
 .dlg .bouton.encre{background:var(--c-bleu);color:#fff;box-shadow:0 10px 20px -10px rgba(10,124,255,.9)}
 
 /* ---------- écrans moyens et téléphones ---------- */
+
+/* ---------- calendrier : rideau au défilement ---------- */
+.cal-pan{padding-bottom:6vh}
+.cal-scene{position:relative;height:290vh;margin-top:54px}
+.cal-colle{position:sticky;top:max(92px,calc(50vh - 340px));height:min(680px,calc(100vh - 120px))}
+.cal-cadre{--p:0;position:relative;width:min(1180px,100%);height:100%;margin:0 auto;border-radius:var(--r-c);overflow:hidden;background:#F4F6FA;box-shadow:var(--w-ombre),inset 0 0 0 1px rgba(255,255,255,.9);color:var(--w-ink)}
+@supports (corner-shape:squircle){.cal-cadre{corner-shape:squircle}}
+.cal-vrac{--c-gris:#8A94A6;--c-violet:#8E5CF7;position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(11,18,32,.09) 1px,transparent 1.4px) 0 0/22px 22px,linear-gradient(180deg,#F7F8FB,#EEF1F6)}
+.vr{position:absolute;left:var(--x);top:var(--y);display:inline-flex;align-items:center;gap:9px;white-space:nowrap;transform:rotate(var(--r));animation:flotteVr 7s ease-in-out var(--d) infinite}
+@keyframes flotteVr{50%{translate:0 -7px}}
+.vr.doc{height:46px;padding:0 18px 0 12px;border-radius:15px;background:#fff;font-size:16px;font-weight:560;letter-spacing:-.01em;box-shadow:0 1px 2px rgba(11,18,32,.08),0 12px 26px -12px rgba(11,18,32,.32)}
+.vr.doc i{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--c);color:#fff}
+.vr.doc i svg{width:16px;height:16px}
+.vr.post{height:36px;padding:0 13px 0 10px;border-radius:10px;background:#FFF5D9;color:#7A5A12;font-size:14px;font-weight:600;box-shadow:0 1px 1px rgba(122,90,18,.12),0 8px 16px -10px rgba(122,90,18,.45)}
+.vr.post i{display:grid;color:#B98918}.vr.post i svg{width:15px;height:15px}
+.vr.note{font-size:17px;font-style:italic;font-weight:420;color:#8792A6;letter-spacing:-.005em}
+.cal-net{position:absolute;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:18px;padding:26px 28px 24px;background:linear-gradient(180deg,#fff,#F5F7FA);clip-path:inset(0 calc((1 - var(--p)) * 100%) 0 0)}
+.cal-trait{position:absolute;top:0;bottom:0;left:calc(var(--p) * 100%);width:2px;margin-left:-1px;background:var(--c-bleu);opacity:calc(1 - var(--fin,0));transition:opacity .4s}
+.cal-cadre.fini .cal-trait{--fin:1}
+.cal-poignee{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:var(--c-bleu);color:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.85),0 12px 26px -8px rgba(10,80,190,.6)}
+.cal-poignee svg{width:24px;height:24px}
+.cal-tete{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--w-trait)}
+.cal-logo{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--c-rouge);color:#fff}.cal-logo svg{width:22px;height:22px}
+.cal-tete>b{font-size:24px;font-weight:620;letter-spacing:-.025em}
+.cal-tuiles{display:flex;gap:10px;margin-left:auto}
+.cal-tu{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:118px;height:62px;padding:0 14px;border-radius:16px;background:var(--w-fond2)}
+.cal-tu small{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--w-ink3);font-variation-settings:var(--rond);white-space:nowrap}
+.cal-tu b{font-size:25px;line-height:1.1;color:var(--c)}
+.cal-corps{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:18px;min-height:0}
+.cal-b{min-height:0;padding:18px 20px;border-radius:22px;background:#fff;box-shadow:0 1px 2px rgba(11,18,32,.06),0 10px 24px -16px rgba(11,18,32,.3);overflow:hidden}
+.cal-b h4{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:650;letter-spacing:-.015em}
+.cal-b h4 .puce,.cal-b h4 small{margin-left:auto}
+.cal-b h4 small{font-size:12.5px;font-weight:500;color:var(--w-ink3)}
+.cal-liste{display:flex;flex-direction:column}.cal-liste ol{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;gap:8px;margin-top:8px;list-style:none;padding:0}
+.cal-liste li{display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:12px;padding:8px 12px 8px 8px;border-radius:14px;background:var(--w-fond2)}
+.cal-j{display:flex;flex-direction:column;align-items:center;justify-content:center;height:46px;border-radius:11px;background:#fff;box-shadow:0 1px 2px rgba(11,18,32,.08)}
+.cal-j b{font-size:20px;line-height:1}.cal-j small{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--c-rouge);font-variation-settings:var(--rond)}
+.cal-q{min-width:0}.cal-q b{display:block;font-size:15px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cal-q small{display:block;font-size:12.5px;color:var(--w-ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:12px}
+.cal-js{text-align:center;font-size:11px;font-weight:700;color:var(--w-ink3);text-transform:uppercase;padding-bottom:2px}
+.cal-c{display:flex;flex-direction:column;align-items:center;justify-content:center;height:clamp(30px,4.6vh,42px);border-radius:10px;font-size:13.5px;color:var(--w-ink2)}
+.cal-c b{font-weight:560;line-height:1.05}
+.cal-c.dl{background:var(--c-bleu);color:#fff;box-shadow:0 6px 14px -8px rgba(10,124,255,.9)}
+.cal-c.dl b{font-weight:700}.cal-c small{font-size:9.5px;font-weight:700;line-height:1;opacity:.92;max-width:100%;overflow:hidden;white-space:nowrap}
+.cal-c.auj{box-shadow:inset 0 0 0 2px var(--c-rouge)}
+.cal-cadre .cal-c.dl{transform:scale(.6);opacity:0;transition:transform .5s var(--ressort),opacity .3s;transition-delay:calc(var(--k,0)*90ms + 150ms)}
+.cal-cadre.vu .cal-c.dl{transform:none;opacity:1}
+.cal-frise{padding-bottom:14px}
+.cal-ms{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:10px;align-items:end;height:74px;margin-top:10px}
+.cal-m{display:flex;flex-direction:column;align-items:stretch;gap:6px;height:100%}
+.cal-m i{position:relative;flex:1;display:flex;align-items:flex-end}
+.cal-m i::before{content:"";width:100%;height:calc(8% + var(--h) * 92%);border-radius:7px;background:#CFE3FF;transform-origin:bottom;transform:scaleY(.05);transition:transform .8s var(--doux)}
+.cal-cadre.vu .cal-m i::before{transform:none}
+.cal-m.fort i::before{background:var(--c-bleu)}
+.cal-m b{font-style:normal;position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:13px;color:#0B3A7A}.cal-m.fort b{color:#fff}
+.cal-m small{text-align:center;font-size:12px;font-weight:600;color:var(--w-ink2);text-transform:capitalize}
+@media (max-height:760px){.cal-frise{display:none}.cal-net{grid-template-rows:auto minmax(0,1fr)}}
 @media (max-width:1100px){
   .mur{grid-auto-rows:200px;gap:16px}
   .w-comp .rg{grid-template-columns:34px 150px minmax(0,1fr) 80px;gap:9px}
@@ -473,6 +530,27 @@ main{position:relative;z-index:10}
   .suiv{gap:8px}.suiv li{padding:10px 10px 11px;border-radius:15px}.suiv li strong{font-size:22px}.suiv li b{font-size:12.5px}.suiv li span{display:none}
   .faq{margin-top:34px}.q button{padding:18px 16px 18px 20px;font-size:17px}.q-r p{padding:0 20px 22px;font-size:15.5px}
 }
+
+/* calendrier : tablette et téléphone */
+@media (max-width:940px){
+  .cal-corps{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cal-tu{min-width:0}
+  .vr.pc{display:none}
+}
+@media (max-width:759px){
+  .cal-scene{height:240vh;margin-top:34px}
+  .cal-colle{top:78px;height:calc(100vh - 100px)}
+  .cal-net{padding:16px 14px;gap:12px;grid-template-rows:auto minmax(0,1fr)}
+  .cal-tete{flex-wrap:wrap;gap:10px;padding-bottom:12px}.cal-tete>b{font-size:19px}.cal-logo{width:32px;height:32px;border-radius:10px}.cal-logo svg{width:18px;height:18px}
+  .cal-tuiles{width:100%;margin-left:0;gap:6px}.cal-tu{flex:1;height:52px;padding:0 6px;border-radius:13px}.cal-tu small{font-size:9px;letter-spacing:.02em}.cal-tu b{font-size:19px}
+  .cal-corps{grid-template-columns:minmax(0,1fr);gap:10px;align-content:start;overflow:hidden}
+  .cal-b{padding:12px 12px;border-radius:18px}.cal-liste li:nth-child(n+4){display:none}.cal-liste li{grid-template-columns:44px minmax(0,1fr) auto;gap:9px}
+  .cal-j{height:40px}.cal-j b{font-size:17px}
+  .cal-c{height:30px;font-size:12px}.cal-c small{display:none}
+  .cal-frise{display:none}
+  .vr{left:var(--xm);top:var(--ym)}.vr.doc{height:38px;font-size:13.5px;padding:0 13px 0 9px;gap:7px}.vr.doc i{width:23px;height:23px}.vr.post{height:31px;font-size:12.5px}.vr.note{font-size:14px}
+  .cal-poignee{width:44px;height:44px;margin:-22px 0 0 -22px}
+}
+@media (prefers-reduced-motion:reduce){.cal-scene{height:auto}.cal-colle{position:relative;top:0;height:640px}.cal-trait{display:none}.vr{animation:none}}
 </style>
 </head>
 <body>
@@ -539,6 +617,26 @@ main{position:relative;z-index:10}
       <p class="chapo" data-t="s2P">Pas un classement de plus. Des faits, rangés pour toi.</p>
     </div>
     <div class="cartes" id="cartes"></div>
+  </div>
+</section>
+
+<section class="pan cal-pan" id="calendrier" aria-labelledby="t5">
+  <div class="cadre">
+    <div class="tete-c">
+      <p class="sur" data-t="s5Sur">Calendrier</p>
+      <h2 id="t5" class="titre" data-t="s5T">Des onglets partout. Un seul calendrier.</h2>
+      <p class="chapo" data-t="s5P"></p>
+    </div>
+  </div>
+  <div class="cal-scene" id="calScene">
+    <div class="cal-colle">
+      <div class="cal-cadre" id="calCadre" aria-hidden="true">
+        <div class="cal-vrac" id="calVrac"></div>
+        <div class="cal-net" id="calNet"></div>
+        <div class="cal-trait"><span class="cal-poignee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span></div>
+      </div>
+      <p class="sr" id="calSr"></p>
+    </div>
   </div>
 </section>
 
@@ -831,6 +929,10 @@ window.B_TEXTES = {
     villes: {}, mois: '{n} mois',
 
     /* 1. Aperçu */
+    s5Sur: 'Calendrier', s5T: 'Des onglets *partout.* {ico}|*Un seul calendrier.*', s5P: 'Fais défiler : brochures, onglets et notes éparpillés se rangent dans un calendrier, avec chacune de tes dates limites.',
+    kTitre: 'Mon calendrier', kStats: ['Prochaine date', 'Dates en {mois}', 'Dates à venir'], kPremier: 'À faire en premier', kFrise: 'Tes dates, mois par mois', kSrc: 'Chaque date renvoie à la page de l’école.', kAuj: 'Aujourd’hui',
+    kSr: 'Animation : des onglets, des fichiers et des notes éparpillés laissent place à un calendrier qui réunit toutes les dates limites.',
+    kVrac: ['brochure_Bocconi_2027.pdf', 'candidatures_v3_FINAL.xlsx', 'Mon Master : 14 onglets', 'Mail : admissions HEC (12)', 'TOEFL : inscription ?', 'la date ESCP, c’est le 6 ou le 14 ?', 'capture_dates_ESCP.png', 'Campus France', 'Lettre de reco : relancer', 'CBS hors UE : groupe 2 ?', 'Groupe promo : « Round 2 ESSEC ? »', 'GMAT : le refaire ?', 'Forum étudiants', 'Bocconi : 2e round fin janvier ?', 'notes_entretiens.docx', 'Sciences Po : voie internationale ?'],
     s1Sur: 'Aperçu de la plateforme', s1T: 'Tous les *masters* {ico}|et leur *vrai prix.*',
     s1P: '{fiches} programmes dans {pays} pays, avec le coût complet et les dates de candidature. Tout au même endroit.',
     s1Alt: 'Sept encarts animés, non interactifs, qui montrent ce que contient la plateforme : une recherche par domaine, pays et budget, la prochaine date limite, la taille du catalogue ({fiches} masters, {ecoles} écoles, {pays} pays), le coût complet d’un master selon le passeport, la comparaison de trois masters, la source d’un montant et les prix en euros ou en dirhams.',
@@ -883,6 +985,10 @@ window.B_TEXTES = {
     enPays: { 'Italie': 'in Italy', 'Allemagne': 'in Germany', 'Pays-Bas': 'in the Netherlands' },
     villes: { 'Londres': 'London', 'Padoue': 'Padua', 'Bruxelles': 'Brussels' }, mois: '{n} months',
 
+    s5Sur: 'Calendar', s5T: 'Tabs *everywhere.* {ico}|*One calendar.*', s5P: 'Scroll: scattered brochures, tabs and notes fall into one calendar, with every deadline you have.',
+    kTitre: 'My calendar', kStats: ['Next deadline', 'Deadlines in {mois}', 'Upcoming'], kPremier: 'Up first', kFrise: 'Your deadlines, month by month', kSrc: 'Every date links to the school’s page.', kAuj: 'Today',
+    kSr: 'Animation: scattered tabs, files and notes give way to one calendar holding every deadline.',
+    kVrac: ['Bocconi_brochure_2027.pdf', 'applications_v3_FINAL.xlsx', 'Program search: 14 tabs', 'Email: HEC admissions (12)', 'TOEFL: sign up?', 'ESCP deadline: the 6th or the 14th?', 'ESCP_dates_screenshot.png', 'Visa portal', 'Rec letter: follow up', 'CBS non-EU: group 2?', 'Class chat: “ESSEC Round 2?”', 'GMAT: retake?', 'Student forum', 'Bocconi: 2nd round late January?', 'interview_notes.docx', 'Sciences Po: international track?'],
     s1Sur: 'A look at the platform', s1T: 'Every *master’s* {ico}|and its *real price.*',
     s1P: '{fiches} programs in {pays} countries, with the full cost and the application dates. All in one place.',
     s1Alt: 'Seven animated, non-interactive tiles showing what the platform holds: a search by field, country and budget, the next deadline, the size of the catalog ({fiches} programs, {ecoles} schools, {pays} countries), the full cost of one program depending on the passport, three programs compared, the source of an amount, and prices in euros or dirhams.',
@@ -1178,7 +1284,7 @@ window.B_TEXTES = {
     marches: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h5v-5h5V9h6"/></svg>',
     question: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 9a3.5 3.5 0 116 2.4c-1.2 1.1-2.4 1.7-2.4 3.4"/><path d="M12.2 18.6v.2"/></svg>'
   };
-  var ICT = { t1: IC.loupe, t2: IC.grille, t3: IC.marches, t4: IC.question }; // la petite tuile glissée dans chaque grand titre
+  var ICT = { t1: IC.loupe, t2: IC.grille, t3: IC.marches, t4: IC.question, t5: IC.cal }; // la petite tuile glissée dans chaque grand titre
 
   /* noms courts des six programmes détaillés du catalogue : [école, programme, pastille] (les montants, eux, viennent de b-data.js) */
   var COURT = { bocconi: ['Bocconi', 'MSc International Management', 'Bo', 'Bocconi'], cbs: ['Copenhagen Business School', 'MSc Finance and Investments', 'CBS', 'CBS'], escp: ['ESCP', 'Master in Management', 'ES', 'ESCP'], hec: ['HEC Paris', 'MiM Grande École', 'HEC', 'HEC Paris'], imperial: ['Imperial College', 'MSc Management', 'IC', 'Imperial'], maastricht: ['Maastricht University', 'Digital Business and Economics', 'UM', 'Maastricht'] };
@@ -1421,6 +1527,72 @@ window.B_TEXTES = {
     d.addEventListener('click', function (ev) { if (ev.target === d && d.close) d.close(); });
   }
 
+
+  /* ---------- calendrier : le fouillis, puis un rideau qui révèle le calendrier au défilement ---------- */
+  var IV = {
+    pdf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v12.5H7z"/><path d="M14 3.5V8h4.5M9.5 13h5M9.5 16.5h5"/></svg>',
+    tab: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="2"/><rect x="13" y="13" width="7.5" height="7.5" rx="2"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.5 7l7.5 6 7.5-6"/></svg>',
+    img: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8 8.5"/></svg>',
+    bulle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17.5l-1.5 3 4-1.2A8.5 8.5 0 1012 3.5a8.5 8.5 0 00-7 13.9z"/></svg>',
+    crayon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5l4 4L9 19l-4.5.5L5 15z"/></svg>'
+  };
+  // type, couleur, gauche %, haut %, rotation, téléphone ; dans l'ordre de kVrac
+  var VRAC = [['doc', 'pdf', 'rose', 5, 9, -6, 1], ['doc', 'tab', 'vert', 55, 5, 4, 1], ['doc', 'tab', 'gris', 27, 27, -3, 1], ['doc', 'mail', 'bleu', 63, 30, 5, 1], ['post', 'crayon', '', 10, 47, 7, 1], ['note', '', '', 36, 55, -4, 1],
+    ['doc', 'img', 'violet', 67, 59, -5, 0], ['doc', 'tab', 'gris', 4, 72, 3, 0], ['post', 'crayon', '', 76, 80, -6, 1], ['note', '', '', 16, 88, 4, 0], ['doc', 'bulle', 'vert', 40, 77, -2, 1], ['post', 'crayon', '', 83, 15, 8, 0],
+    ['doc', 'tab', 'gris', 33, 6, -2, 0], ['note', '', '', 56, 93, -3, 1], ['doc', 'pdf', 'bleu', 74, 45, 3, 0], ['note', '', '', 3, 30, 5, 0]];
+  var VRAC_TEL = { 0: [5, 7], 1: [20, 18], 2: [7, 31], 3: [17, 43], 4: [38, 55], 5: [6, 65], 8: [30, 75], 10: [3, 85], 13: [8, 94] }; // positions sur téléphone
+  var calCadre = null, calScene = null, calP = -1, calVu = false;
+  function calendrier() {
+    calCadre = $('#calCadre'); calScene = $('#calScene'); calP = -1; calVu = false;
+    var lg = B.langue(), fr = lg === 'fr', txt = T('kVrac');
+    $('#calSr').textContent = T('kSr');
+    $('#calVrac').innerHTML = VRAC.map(function (v, i) {
+      var m = VRAC_TEL[i] || [v[3], v[4]], st = '--x:' + v[3] + '%;--y:' + v[4] + '%;--xm:' + m[0] + '%;--ym:' + m[1] + '%;--r:' + v[5] + 'deg;--d:' + (-(i * 1.7) % 9).toFixed(1) + 's';
+      if (v[0] === 'note') return '<span class="vr note' + (v[6] ? '' : ' pc') + '" style="' + st + '">' + e(txt[i]) + '</span>';
+      return '<span class="vr ' + v[0] + (v[6] ? '' : ' pc') + '" style="' + st + ';--c:var(--c-' + (v[2] || 'orange') + ')"><i>' + IV[v[1]] + '</i>' + e(txt[i]) + '</span>';
+    }).join('');
+    // les dates : à venir, regroupées par mois
+    var pr = prochaines(), auj = new Date(); auj.setHours(0, 0, 0, 0);
+    var mois = {}; pr.forEach(function (x) { if (x.j < 0) return; var d = B.jour(x.d.iso), k = d.getFullYear() * 12 + d.getMonth(); (mois[k] = mois[k] || []).push(x); });
+    var cles = Object.keys(mois).map(Number).sort(function (a, b) { return a - b; });
+    var plein = cles.reduce(function (m, k) { return mois[k].length > (mois[m] || []).length ? k : m; }, cles[0]);
+    var fMois = function (k, opt) { return new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', opt).format(new Date(Math.floor(k / 12), k % 12, 1)); };
+    var nomPlein = fMois(plein, { month: 'long', year: 'numeric' });
+    var ce = auj.getFullYear() * 12 + auj.getMonth(), nCe = (mois[ce] || []).length, av = pr.filter(function (x) { return x.j >= 0; }), p0 = av[0];
+    var stats = T('kStats');
+    var tuiles = [[stats[0], p0 ? compteRebours(p0.j) : '-', 'rouge'], [gab(stats[1], { mois: fMois(ce, { month: 'long' }) }), String(nCe), 'bleu'], [stats[2], String(av.length), 'vert']];
+    // la liste : les quatre premières
+    var liste = av.slice(0, 3).map(function (x, i) { var d = B.jour(x.d.iso); return '<li style="--i:' + i + '"><span class="cal-j"><b class="n">' + d.getDate() + '</b><small>' + e(moisCourt(x.d.iso)) + '</small></span><span class="cal-q"><b>' + e(x.d.e) + '</b><small>' + e(x.d.p + ' · ' + x.d[lg]) + '</small></span><em class="puce' + (x.j <= 7 ? ' vite' : '') + '">' + e(compteRebours(x.j)) + '</em></li>'; }).join('');
+    // le mois le plus chargé, en grille
+    var y0 = Math.floor(plein / 12), m0 = plein % 12, prem = new Date(y0, m0, 1), dec = (prem.getDay() + 6) % 7, nb = new Date(y0, m0 + 1, 0).getDate();
+    var parJour = {}; (mois[plein] || []).forEach(function (x) { var j = B.jour(x.d.iso).getDate(); (parJour[j] = parJour[j] || []).push(x.d.e); });
+    var initJ = []; for (var w = 0; w < 7; w++) initJ.push(new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { weekday: 'narrow' }).format(new Date(2026, 10, 23 + w)));
+    var cases = initJ.map(function (l) { return '<span class="cal-js">' + e(l) + '</span>'; }).join('');
+    for (var c = 0; c < dec; c++) cases += '<span class="cal-c vide"></span>';
+    for (var dj = 1; dj <= nb; dj++) { var ev = parJour[dj], estAuj = y0 === auj.getFullYear() && m0 === auj.getMonth() && dj === auj.getDate();
+      cases += '<span class="cal-c' + (ev ? ' dl' : '') + (estAuj ? ' auj' : '') + '"' + (ev ? ' style="--k:' + Object.keys(parJour).indexOf(String(dj)) + '"' : '') + '><b>' + dj + '</b>' + (ev ? '<small>' + e(ev.length > 1 ? gab(fr ? '{n} dates' : '{n} due', { n: ev.length }) : ev[0].replace(/ .*/, '')) + '</small>' : '') + '</span>'; }
+    // la frise, mois par mois jusqu'à la dernière date
+    var der = cles[cles.length - 1], frise = '', mx = 1; for (var kk = ce; kk <= der; kk++) mx = Math.max(mx, (mois[kk] || []).length);
+    for (var k2 = ce; k2 <= der; k2++) { var n2 = (mois[k2] || []).length; frise += '<span class="cal-m' + (k2 === plein ? ' fort' : '') + '"><i style="--h:' + (n2 / mx).toFixed(3) + '"><b class="n">' + (n2 || '') + '</b></i><small>' + e(fMois(k2, { month: 'short' }).replace('.', '')) + '</small></span>'; }
+    $('#calNet').innerHTML =
+      '<header class="cal-tete"><span class="cal-logo">' + IC.cal + '</span><b>' + e(T('kTitre')) + '</b><div class="cal-tuiles">' + tuiles.map(function (t) { return '<span class="cal-tu" style="--c:var(--c-' + t[2] + ')"><small>' + e(t[0]) + '</small><b class="n">' + e(t[1]) + '</b></span>'; }).join('') + '</div></header>' +
+      '<div class="cal-corps"><section class="cal-b cal-liste"><h4>' + e(T('kPremier')) + '</h4><ol>' + liste + '</ol></section>' +
+      '<section class="cal-b cal-grille"><h4>' + e(nomPlein.charAt(0).toUpperCase() + nomPlein.slice(1)) + '<em class="puce">' + e(gab(fr ? '{n} dates' : '{n} deadlines', { n: (mois[plein] || []).length })) + '</em></h4><div class="cal-g">' + cases + '</div></section></div>' +
+      '<footer class="cal-b cal-frise"><h4>' + e(T('kFrise')) + '<small>' + e(T('kSrc')) + '</small></h4><div class="cal-ms">' + frise + '</div></footer>';
+    if (B.reduit) calCadre.style.setProperty('--p', '1');
+  }
+  function suivreCal(vh) {
+    if (!calCadre || B.reduit) return;
+    var r = calScene.getBoundingClientRect(); if (r.bottom < -50 || r.top > vh + 50) return;
+    var colle = calCadre.parentNode, h = colle.offsetHeight, top = parseFloat(getComputedStyle(colle).top) || 0;
+    var t = (top - r.top) / Math.max(1, r.height - h), p = B.lisse(.1, .86, t);
+    if (Math.abs(p - calP) < .0008) return; calP = p;
+    calCadre.style.setProperty('--p', p.toFixed(4));
+    calCadre.classList.toggle('fini', p > .985);
+    if (p > .15 && !calVu) { calVu = true; calCadre.classList.add('vu'); }
+  }
+
   /* ---------- apparitions au défilement ---------- */
   var obs = null;
   function apparitions() {
@@ -1436,6 +1608,7 @@ window.B_TEXTES = {
   var liens = $$('#liens a'), navVu = null, SECTIONS = ['apercu', 'fonctions', 'etapes', 'questions'];
   function suivre() {
     var v = B.vue(), vh = v.vh, i, r;
+    suivreCal(vh);
     if (cartesPile.length && !B.reduit) { r = cartesPile[0].parentNode.getBoundingClientRect(); if (r.top < vh && r.bottom > 0) for (i = 0; i < cartesPile.length - 1; i++) { var a = cartesPile[i].getBoundingClientRect(), b = cartesPile[i + 1].getBoundingClientRect(), p = B.borne((a.bottom - b.top) / Math.max(1, a.height), 0, 1), in1 = cartesPile[i].firstElementChild; in1.style.setProperty('--s', (1 - .05 * p).toFixed(4)); in1.style.setProperty('--o', (.10 * p).toFixed(3)); } }
     var yc = window.scrollY + vh * .5, cur = ''; for (i = 0; i < SECTIONS.length; i++) if (v.Y[SECTIONS[i]] != null && yc >= v.Y[SECTIONS[i]] && yc < v.Y[SECTIONS[i] + 'Bas']) cur = SECTIONS[i];
     if (cur !== navVu) { navVu = cur; liens.forEach(function (l) { if (l.getAttribute('href') === '#' + cur) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current'); }); }
@@ -1443,7 +1616,7 @@ window.B_TEXTES = {
 
   function tout() {
     comps.forEach(function (c) { c.fil.couper(); }); comps = [];
-    textes(); mur(); cartes(); etapes(); questions(); B.mesurer(); enseignes(); apparitions(); surveiller();
+    textes(); mur(); cartes(); calendrier(); etapes(); questions(); B.mesurer(); enseignes(); apparitions(); surveiller();
   }
 
   /* ---------- mise en route ---------- */
